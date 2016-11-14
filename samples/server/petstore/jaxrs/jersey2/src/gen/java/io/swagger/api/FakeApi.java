@@ -68,14 +68,15 @@ public class FakeApi  {
 ,@ApiParam(value = "None")  @FormParam("date")  Date date
 ,@ApiParam(value = "None")  @FormParam("dateTime")  Date dateTime
 ,@ApiParam(value = "None")  @FormParam("password")  String password
+,@ApiParam(value = "None")  @FormParam("callback")  String paramCallback
 ,@Context SecurityContext securityContext)
     throws NotFoundException {
-        return delegate.testEndpointParameters(number,_double,patternWithoutDelimiter,_byte,integer,int32,int64,_float,string,binary,date,dateTime,password,securityContext);
+        return delegate.testEndpointParameters(number,_double,patternWithoutDelimiter,_byte,integer,int32,int64,_float,string,binary,date,dateTime,password,paramCallback,securityContext);
     }
     @GET
     
-    @Consumes({ "application/json" })
-    @Produces({ "application/json" })
+    @Consumes({ "*/*" })
+    @Produces({ "*/*" })
     @io.swagger.annotations.ApiOperation(value = "To test enum parameters", notes = "", response = void.class, tags={ "fake", })
     @io.swagger.annotations.ApiResponses(value = { 
         @io.swagger.annotations.ApiResponse(code = 400, message = "Invalid request", response = void.class),
